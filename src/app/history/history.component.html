@@ -1,0 +1,48 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        History
+      </h1>
+      <h2 class="subtitle">
+        See the faces you've seen in the past.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" *ngFor="let face of [1,2,3,4,5]; even as even; odd as odd"> <!-- TODO use observable pipe -->
+    <!-- iterate this over history -->
+    <div class="tile is-ancestor">
+      <div class="tile is-parent is-2">
+        <div class="tile is-child">
+        </div>
+      </div>
+
+      <div class="tile is-parent is-4" *ngIf="even">
+        <div class="tile is-child has-text-centered">
+          <p>img</p>
+        </div>
+      </div>
+      <div class="tile is-parent is-4">
+        <div class="tile is-child has-text-centered box">
+          <p>You met USER {{face}}</p>
+        </div>
+      </div>
+      <div class="tile is-parent is-4" *ngIf="odd">
+        <div class="tile is-child has-text-centered">
+          <p>img</p>
+        </div>
+      </div>
+
+      <div class="tile is-parent is-2">
+        <div class="tile is-child">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="has-text-centered text-muted">Looks like that's everyone. Go meet some new faces!</p>
+</section>
+
