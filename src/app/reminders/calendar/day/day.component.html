@@ -1,0 +1,11 @@
+{{formatted_date(day)}}{{isToday ? " (Today)" : ""}}
+<div class="box">
+  <div class="notification" *ngFor="let event of events"
+       [ngClass]="event.type == 'appointment' ? 'is-success' : 'is-info'">
+    {{event.name}}<br>
+    {{formatted_time(event.epoch)}}
+  </div>
+  <div *ngIf="!events.length">
+    No events today!
+  </div>
+</div>

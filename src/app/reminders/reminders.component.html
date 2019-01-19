@@ -1,0 +1,24 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Reminders
+      </h1>
+      <h2 class="subtitle">
+        Check up on the things you need to face.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <!--<div class="buttons has-addons">-->
+    <!--<span class="button" [ngClass]="viewIsList ? '' : 'is-info is-selected'"-->
+          <!--(click)="viewIsList=false">Calendar View</span>-->
+    <!--<span class="button" [ngClass]="!viewIsList ? '' : 'is-info is-selected'" (click)="viewIsList=true">List View</span>-->
+  <!--</div>-->
+
+  <app-calendar *ngIf="!viewIsList" [events]="testEvents"></app-calendar>
+  <!--<app-list *ngIf="viewIsList" [events]="events"></app-list>-->
+</section>
+
