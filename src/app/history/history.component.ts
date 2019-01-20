@@ -29,14 +29,11 @@ export class HistoryComponent implements OnInit {
 
 
   ngOnInit() {
-    const users = this.db.list<Face>('users').snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => {
-          this.faces.set(c.payload.key, c.payload.val());
-        })
-      )
-    );
-    users.subscribe();
+    this.db.object<Face>('users').snapshotChanges()
+      .subscribe(action => {
+        this.faces = new Map(Object.entries(action.payload.val()));
+      });
+
   }
 
   meetSort(a, b) {
