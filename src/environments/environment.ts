@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'project-anti-alz',
     storageBucket: 'project-anti-alz.appspot.com',
     messagingSenderId: '381046946192'
-  }
+  },
+  apiUrl: 'http://1f757ced.ngrok.io'
 };
 
 /*

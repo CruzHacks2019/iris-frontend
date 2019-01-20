@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
+import {AppService} from '../app.service';
 
 @Component({
   selector: 'app-relationships',
@@ -14,7 +15,7 @@ export class RelationshipsComponent implements OnInit {
   userRef: AngularFireList<Face>;
   Object = Object;
 
-  constructor(db: AngularFireDatabase) {
+  constructor(db: AngularFireDatabase, private service: AppService) {
     this.userRef = db.list<Face>('users');
     this.users = this.userRef.snapshotChanges().pipe(
       map(changes =>
@@ -32,7 +33,8 @@ export class RelationshipsComponent implements OnInit {
   }
 
   new_face(name, relation, notes, file) {
-    console.log(name + relation + notes + file.name); // TODO
+    console.log(name + relation + notes + file.name);
+    this.service.new_face(name, relation, notes, file);
   }
 
 }

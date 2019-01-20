@@ -15,6 +15,7 @@ import {DayComponent} from './reminders/calendar/day/day.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
   ],
   imports: [
     NgbModule,
+    HttpClientModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
