@@ -11,13 +11,13 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section animated fadeIn delay-2s">
   <div class="columns is-multiline">
-    <div class="column is-one-quarter animated fadeIn" *ngFor="let face of users | async">
+    <div class="column is-one-quarter" *ngFor="let face of users | async">
 
       <a role="button" (click)="modal.classList.toggle('is-active')">
         <div class="card">
-          <div class="card-image animated fadeIn" *ngIf="face.imgUrls">
+          <div class="card-image" *ngIf="face.imgUrls">
             <figure class="image is-1by1">
               <img [src]="face.imgUrls[Object.keys(face.imgUrls)[0]]" alt="{{face.name}}'s face">
             </figure>
@@ -33,7 +33,7 @@
         </div>
       </a>
 
-      <div class="modal" #modal>
+      <div class="modal animated fadeIn" #modal>
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
@@ -60,7 +60,7 @@
   </span>
 </a>
 
-<div class="modal" #newmodal>
+<div class="modal animated fadeIn" #newmodal>
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">

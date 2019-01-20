@@ -15,3 +15,11 @@
 .textarea {
   margin-bottom: 8px;
 }
+
+.modal {
+  z-index: 100;
+}
+
+.card {
+  z-index: 0;
+}
