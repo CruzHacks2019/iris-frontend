@@ -1,7 +1,6 @@
 {{formatted_date(day)}}{{isToday ? " (Today)" : ""}}
 <div class="box">
-  <div class="notification" *ngFor="let event of events"
-       [ngClass]="event.type == 'appointment' ? 'is-success' : 'is-info'">
+  <div class="notification is-light animated fadeIn" *ngFor="let event of events">
     {{event.name}}<br>
     {{formatted_time(event.epoch)}}
   </div>

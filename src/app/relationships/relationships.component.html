@@ -1,10 +1,10 @@
 <section class="hero is-primary">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">
+      <h1 class="title animated fadeIn">
         Relationships
       </h1>
-      <h2 class="subtitle">
+      <h2 class="subtitle animated fadeIn delay-1s">
         Manage the faces that stand out to you.
       </h2>
     </div>
@@ -13,11 +13,11 @@
 
 <section class="section">
   <div class="columns is-multiline">
-    <div class="column is-one-quarter" *ngFor="let face of users | async">
+    <div class="column is-one-quarter animated fadeIn" *ngFor="let face of users | async">
 
       <a role="button" (click)="modal.classList.toggle('is-active')">
         <div class="card">
-          <div class="card-image" *ngIf="face.imgUrls">
+          <div class="card-image animated fadeIn" *ngIf="face.imgUrls">
             <figure class="image is-1by1">
               <img [src]="face.imgUrls[Object.keys(face.imgUrls)[0]]" alt="{{face.name}}'s face">
             </figure>

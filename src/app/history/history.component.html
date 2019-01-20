@@ -1,10 +1,10 @@
 <section class="hero is-primary">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">
+      <h1 class="title animated fadeIn">
         History
       </h1>
-      <h2 class="subtitle">
+      <h2 class="subtitle animated fadeIn delay-1s">
         See the faces you've seen in the past.
       </h2>
     </div>
@@ -14,21 +14,21 @@
 <section class="section columns">
   <div class="column is-2"></div> <!-- for spacing -->
   <div class="column is-8">
-    <div class="container" *ngFor="let face of (meets | async)?.sort(meetSort); even as even; odd as odd">
+    <div class="container animated fadeIn" *ngFor="let face of (meets | async)?.sort(meetSort); even as even; odd as odd">
       <div class="columns">
         <div class="column is-4" *ngIf="even">
-          <img [src]="face.imgUrls" class="imageee">
+          <img [src]="face.imgUrls" class="imageee animated fadeIn">
         </div>
         <div class="column is-4 whoami">
           <div [ngClass]="odd ? 'is-pulled-right' : 'is-pulled-left'" class="notification is-info">
             <p>
-              You met {{getFace(face).name}}, your {{getFace(face).userData.toLowerCase()}}.
+              You met {{getFace(face).name}}, {{getFace(face).userData}}.
             </p>
             <div class="smol">{{getTime(face)}}</div>
           </div>
         </div>
         <div class="column is-4" *ngIf="odd">
-          <img [src]="face.imgUrls" class="imageee">
+          <img [src]="face.imgUrls" class="imageee animated fadeIn">
         </div>
       </div>
 
