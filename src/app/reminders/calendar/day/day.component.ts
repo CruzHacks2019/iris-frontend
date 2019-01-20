@@ -31,7 +31,7 @@ export class DayComponent implements OnInit {
     const minute = date.getMinutes();
     const ampm = hour > 12 ? 'PM' : 'AM';
     hour = hour > 12 ? hour - 12 : hour;
-    return `${hour}:${minute} ${ampm}`;
+    return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
   }
 
 }
