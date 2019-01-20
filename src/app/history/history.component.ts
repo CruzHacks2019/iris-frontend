@@ -1,5 +1,6 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/database';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
 import {Face} from '../relationships/relationships.component';
 
@@ -10,31 +11,29 @@ import {Face} from '../relationships/relationships.component';
 })
 export class HistoryComponent implements OnInit {
 
-  realMeets: Meet[] = [];
+  meets: Observable<Meet[]>;
+  meetRef: AngularFireList<Meet>;
   faces: Map<string, Face> = new Map();
-  mobile = false;
 
   constructor(private db: AngularFireDatabase) {
-    this.db.list<Meet>('history').snapshotChanges().pipe(
+    this.meetRef = db.list<Meet>('history');
+    this.meets = this.meetRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => {
-          const a = {key: c.payload.key, ...c.payload.val()};
-          console.log(a);
-          if (!this.realMeets.includes(a)) {
-            this.realMeets.push(a);
-          }
-          return a;
+          console.log(c.payload.val());
+          return ({key: c.payload.key, ...c.payload.val()});
         })
       )
-    ).subscribe();
+    );
   }
+
 
   ngOnInit() {
     this.db.object<Face>('users').snapshotChanges()
       .subscribe(action => {
         this.faces = new Map(Object.entries(action.payload.val()));
       });
-    this.mobile = window.innerWidth < 769;
+
   }
 
   meetSort(a, b) {
@@ -52,10 +51,6 @@ export class HistoryComponent implements OnInit {
     return date.toLocaleString();
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.mobile = event.target.innerWidth < 769;
-  }
 }
 
 export class Meet {
