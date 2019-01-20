@@ -31,7 +31,7 @@
             </div>
 
             <div class="content">
-              <time>Last seen DATE</time>
+              <time>Last seen DATE</time> <!-- TODO ? -->
             </div>
           </div>
         </div>
@@ -58,4 +58,25 @@
   </div>
 </section>
 
+<a class="button is-medium add-button is-primary" role="button" (click)="newmodal.classList.toggle('is-active')">
+  <span class="icon">
+    <i class="fas fa-plus"></i>
+  </span>
+</a>
 
+<div class="modal" #newmodal>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add new face...</p>
+    </header>
+    <section class="modal-card-body">
+      A form probably
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="newmodal.classList.toggle('is-active')">Cancel</button>
+      <button class="button is-success" (click)="new_face(); newmodal.classList.toggle('is-active')">Create
+      </button>
+    </footer>
+  </div>
+</div>

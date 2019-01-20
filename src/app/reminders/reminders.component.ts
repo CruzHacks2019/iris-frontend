@@ -17,6 +17,7 @@ export class RemindersComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.events.sort((a, b) => a.epoch - b.epoch);
     this.testEvents.sort((a, b) => a.epoch - b.epoch);
   }
 

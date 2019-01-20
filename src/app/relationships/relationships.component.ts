@@ -17,4 +17,8 @@ export class RelationshipsComponent implements OnInit {
     console.log('I\'d delete your face');
   }
 
+  new_face() {
+    console.log('I will create a face now');
+  }
+
 }
