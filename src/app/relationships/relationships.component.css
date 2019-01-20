@@ -4,7 +4,7 @@
   bottom: 1em;
 }
 
-.image {
+.image img {
   object-fit: cover !important;
 }
 
