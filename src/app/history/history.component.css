@@ -1,0 +1,20 @@
+.whoami {
+  height: 4em;
+}
+
+.smol {
+  padding-top: -3em;
+  font-size: 10px;
+}
+
+.notification {
+  padding: 0.5rem;
+}
+
+.line {
+   width: 66%;
+}
+
+.imageee {
+  border-radius: 5px;
+}

@@ -11,38 +11,32 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container" *ngFor="let face of [1,2,3,4,5]; even as even; odd as odd"> <!-- TODO use observable pipe -->
-    <!-- iterate this over history -->
-    <div class="tile is-ancestor">
-      <div class="tile is-parent is-2">
-        <div class="tile is-child">
+<section class="section columns">
+  <div class="column is-2"></div> <!-- for spacing -->
+  <div class="column is-8">
+    <div class="container" *ngFor="let face of (meets | async)?.sort(meetSort); even as even; odd as odd">
+      <div class="columns">
+        <div class="column is-4" *ngIf="even">
+          <img [src]="face.imgUrls" class="imageee">
+        </div>
+        <div class="column is-4 whoami">
+          <div [ngClass]="odd ? 'is-pulled-right' : 'is-pulled-left'" class="notification is-info">
+            <p>
+              You met {{getFace(face).name}}, your {{getFace(face).userData.toLowerCase()}}.
+            </p>
+            <div class="smol">{{getTime(face)}}</div>
+          </div>
+        </div>
+        <div class="column is-4" *ngIf="odd">
+          <img [src]="face.imgUrls" class="imageee">
         </div>
       </div>
 
-      <div class="tile is-parent is-4" *ngIf="even">
-        <div class="tile is-child has-text-centered">
-          <p>img</p>
-        </div>
-      </div>
-      <div class="tile is-parent is-4">
-        <div class="tile is-child has-text-centered box">
-          <p>You met USER {{face}}</p>
-        </div>
-      </div>
-      <div class="tile is-parent is-4" *ngIf="odd">
-        <div class="tile is-child has-text-centered">
-          <p>img</p>
-        </div>
-      </div>
-
-      <div class="tile is-parent is-2">
-        <div class="tile is-child">
-        </div>
-      </div>
+      <hr class="line">
     </div>
-  </div>
 
-  <p class="has-text-centered text-muted">Looks like that's everyone. Go meet some new faces!</p>
+    <p class="has-text-centered text-muted">Looks like that's everyone. Go meet some new faces!</p>
+  </div>
+  <div class="column is-2"></div> <!-- shh -->
 </section>
 

@@ -13,11 +13,11 @@
 
 <section class="section">
   <div class="columns is-multiline">
-    <div class="column is-one-quarter" *ngFor="let face of users | async; index as i">
+    <div class="column is-one-quarter" *ngFor="let face of users | async">
 
       <a role="button" (click)="modal.classList.toggle('is-active')">
         <div class="card">
-          <div class="card-image">
+          <div class="card-image" *ngIf="face.imgUrls">
             <figure class="image is-1by1">
               <img [src]="face.imgUrls[Object.keys(face.imgUrls)[0]]" alt="{{face.name}}'s face">
             </figure>
@@ -28,10 +28,6 @@
                 <p class="title is-4">{{face.name}}</p>
                 <p class="subtitle is-6">{{face.userData}}</p>
               </div>
-            </div>
-
-            <div class="content">
-              <time>Last seen DATE</time> <!-- TODO ? -->
             </div>
           </div>
         </div>

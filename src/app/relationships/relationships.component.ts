@@ -19,7 +19,10 @@ export class RelationshipsComponent implements OnInit {
     this.userRef = db.list<Face>('users');
     this.users = this.userRef.snapshotChanges().pipe(
       map(changes =>
-        changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
+        changes.map(c => {
+          console.log(c.payload.val());
+          return ({key: c.payload.key, ...c.payload.val()});
+        })
       )
     );
   }
