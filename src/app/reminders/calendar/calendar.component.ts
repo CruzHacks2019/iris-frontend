@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CalEvent} from '../reminders.component';
 
 
@@ -7,7 +7,7 @@ import {CalEvent} from '../reminders.component';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, OnChanges {
 
   @Input() events: CalEvent[];
   today: Date;
@@ -25,6 +25,14 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.events) {
+      console.log('Sorting events');
+      this.events.sort((a, b) => a.epoch - b.epoch);
+      console.log(this.events);
+    }
   }
 
   dayFilter(start: Date, end: Date) {

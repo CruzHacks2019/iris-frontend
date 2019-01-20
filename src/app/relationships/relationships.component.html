@@ -13,20 +13,20 @@
 
 <section class="section">
   <div class="columns is-multiline">
-    <div class="column is-one-quarter" *ngFor="let face of [1,2,3,4,5]; index as i">
+    <div class="column is-one-quarter" *ngFor="let face of users | async; index as i">
 
       <a role="button" (click)="modal.classList.toggle('is-active')">
         <div class="card">
           <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            <figure class="image is-1by1">
+              <img [src]="face.imgUrls[Object.keys(face.imgUrls)[0]]" alt="{{face.name}}'s face">
             </figure>
           </div>
           <div class="card-content">
             <div class="media">
               <div class="media-content">
-                <p class="title is-4">Firstname {{face}}</p>
-                <p class="subtitle is-6">Relationship</p>
+                <p class="title is-4">{{face.name}}</p>
+                <p class="subtitle is-6">{{face.userData}}</p>
               </div>
             </div>
 
@@ -41,10 +41,10 @@
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title">{{face}}</p>
+            <p class="modal-card-title">{{face.name}}</p>
           </header>
           <section class="modal-card-body">
-            More information about {{face}} and stuff
+            {{face.additionalMsg}}
           </section>
           <footer class="modal-card-foot">
             <button class="button" (click)="modal.classList.toggle('is-active')">Close</button>
@@ -71,11 +71,34 @@
       <p class="modal-card-title">Add new face...</p>
     </header>
     <section class="modal-card-body">
-      A form probably
+      <input class="input" type="text" placeholder="Name" required #name>
+      <input class="input" type="text" placeholder="Relation" required #relation>
+      <textarea class="textarea" placeholder="Additional Notes" #notes></textarea>
+      Take a picture of the face!
+      <div class="file has-name">
+        <label class="file-label">
+          <input class="file-input" type="file" name="image" accept="image/*" capture="environment"
+                 (change)="filename.innerHTML = file.files[0].name;" #file required>
+          <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose an image…
+          </span>
+          </span>
+          <span class="file-name" #filename>
+            ...
+          </span>
+        </label>
+      </div>
     </section>
     <footer class="modal-card-foot">
       <button class="button" (click)="newmodal.classList.toggle('is-active')">Cancel</button>
-      <button class="button is-success" (click)="new_face(); newmodal.classList.toggle('is-active')">Create
+      <button class="button is-success"
+              (click)="new_face(name.value, relation.value, notes.value, file.files[0]);
+              newmodal.classList.toggle('is-active')">
+        Create
       </button>
     </footer>
   </div>

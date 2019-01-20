@@ -3,3 +3,15 @@
   right: 1em;
   bottom: 1em;
 }
+
+.image {
+  object-fit: cover;
+}
+
+.input {
+  margin-bottom: 4px;
+}
+
+.textarea {
+  margin-bottom: 8px;
+}

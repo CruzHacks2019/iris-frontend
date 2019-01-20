@@ -12,6 +12,9 @@ import {RemindersComponent} from './reminders/reminders.component';
 import {CalendarComponent} from './reminders/calendar/calendar.component';
 import {ListComponent} from './reminders/list/list.component';
 import {DayComponent} from './reminders/calendar/day/day.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import {DayComponent} from './reminders/calendar/day/day.component';
   imports: [
     NgbModule,
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     AppRoutingModule
   ],
   providers: [],

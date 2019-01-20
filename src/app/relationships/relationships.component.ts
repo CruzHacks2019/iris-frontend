@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   selector: 'app-relationships',
@@ -7,7 +9,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RelationshipsComponent implements OnInit {
 
-  constructor() {
+  users: Observable<Face[]>;
+  Object = Object;
+
+  constructor(db: AngularFireDatabase) {
+    this.users = db.list<Face>('users').valueChanges();
   }
 
   ngOnInit() {
@@ -17,8 +23,16 @@ export class RelationshipsComponent implements OnInit {
     console.log('I\'d delete your face');
   }
 
-  new_face() {
-    console.log('I will create a face now');
+  new_face(name, relation, notes, file) {
+    console.log(name + relation + notes + file.name);
   }
 
+}
+
+export class Face {
+  name: string;
+  userData: string;
+  additionalMsg: string;
+  imgUrls: Map<string, string>;
+  msg: string;
 }

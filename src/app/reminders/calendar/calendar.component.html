@@ -3,7 +3,7 @@
 <!--</p>-->
 
 <div class="columns">
-  <app-day [day]="day1" [events]="events.filter(dayFilter(day1, day2))" [isToday]="true" class="column"></app-day>
-  <app-day [day]="day2" [events]="events.filter(dayFilter(day2, day3))" [isToday]="false" class="column"></app-day>
-  <app-day [day]="day3" [events]="events.filter(dayFilter(day3, end))" [isToday]="false" class="column"></app-day>
+  <app-day [day]="day1" [events]="events?.filter(dayFilter(day1, day2))" [isToday]="true" class="column"></app-day>
+  <app-day [day]="day2" [events]="events?.filter(dayFilter(day2, day3))" [isToday]="false" class="column"></app-day>
+  <app-day [day]="day3" [events]="events?.filter(dayFilter(day3, end))" [isToday]="false" class="column"></app-day>
 </div>

@@ -5,7 +5,7 @@
     {{event.name}}<br>
     {{formatted_time(event.epoch)}}
   </div>
-  <div *ngIf="!events.length">
+  <div *ngIf="!events?.length">
     No events today!
   </div>
 </div>

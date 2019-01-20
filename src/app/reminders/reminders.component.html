@@ -18,7 +18,7 @@
     <!--<span class="button" [ngClass]="!viewIsList ? '' : 'is-info is-selected'" (click)="viewIsList=true">List View</span>-->
   <!--</div>-->
 
-  <app-calendar *ngIf="!viewIsList" [events]="testEvents"></app-calendar>
+  <app-calendar *ngIf="!viewIsList" [events]="events | async"></app-calendar>
   <!--<app-list *ngIf="viewIsList" [events]="events"></app-list>-->
 </section>
 

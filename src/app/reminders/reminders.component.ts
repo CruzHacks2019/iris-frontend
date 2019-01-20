@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   selector: 'app-reminders',
@@ -8,17 +10,14 @@ import {Component, OnInit} from '@angular/core';
 export class RemindersComponent implements OnInit {
 
   viewIsList = false;
-  events: CalEvent[];
+  events: Observable<CalEvent[]>;
 
-  testEvents = [{type: 'medication', name: 'Take Pills', epoch: 1548026313422},
-    {type: 'appointment', name: 'Doctor\'s Appt',        epoch: 1548026203422}];
 
-  constructor() {
+  constructor(db: AngularFireDatabase) {
+    this.events = db.list<CalEvent>('reminders').valueChanges();
   }
 
   ngOnInit() {
-    // this.events.sort((a, b) => a.epoch - b.epoch);
-    this.testEvents.sort((a, b) => a.epoch - b.epoch);
   }
 
 }
