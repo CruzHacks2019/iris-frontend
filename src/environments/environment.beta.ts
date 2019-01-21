@@ -12,7 +12,7 @@ export const environment = {
     storageBucket: 'project-anti-alz.appspot.com',
     messagingSenderId: '381046946192'
   },
-  apiUrl: 'http://1f757ced.ngrok.io'
+  apiUrl: 'http://689afc05.ngrok.io'
 };
 
 /*

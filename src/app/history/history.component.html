@@ -15,7 +15,7 @@
   <div class="column is-2"></div> <!-- for spacing -->
   <div class="column is-8">
     <div class="container animated fadeIn"
-         *ngFor="let face of realMeets?.sort(meetSort); even as even; odd as odd">
+         *ngFor="let face of (meets | async)?.sort(meetSort); even as even; odd as odd">
       <div class="columns">
         <div class="column is-4" *ngIf="even || mobile">
           <img [src]="face.imgUrls" class="imageee animated fadeIn">
